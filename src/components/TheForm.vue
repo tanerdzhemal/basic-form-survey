@@ -25,10 +25,9 @@
         name="age"
         type="number"
         v-model="userAge"
-        ref="ageInput"
         @blur="validateAgeInput"
       />
-      <p v-if="userAgeValidity === 'invalid'">Please enter a age!</p>
+      <p v-if="userAgeValidity === 'invalid'">Please enter age!</p>
     </div>
     <div class="form-control">
       <label for="referrer">How did you hear about us?</label>
@@ -118,6 +117,12 @@
     <div class="form-control">
       <p>How was your experince?</p>
       <rating-control v-model="rating"></rating-control>
+      <p v-if="rating === 'poor'">
+        Sorry to hear that 😞 . Helps us to improve 🙂.
+      </p>
+      <p v-if="rating === 'average'">We are trying our best to improve!</p>
+      <p v-if="rating == 'great'">Our team is very happy to hear that !!!</p>
+      <input v-if="rating !== null" type="text" placeholder="Feedback." />
     </div>
     <div class="form-control">
       <input
@@ -165,8 +170,8 @@ export default {
     submitForm() {
       // console.log('Username: ' + this.userName);
       this.userName = '';
-      // console.log('Age: ', this.userAge);
-      // console.log(this.userAge)
+      console.log('Age:', this.userAge);
+      console.log(this.userAge);
       this.userAge = null;
       // console.log('Refferer:', this.referrer);
       this.referrer = 'wom';
