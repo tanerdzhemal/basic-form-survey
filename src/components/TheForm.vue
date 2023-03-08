@@ -102,15 +102,17 @@
           v-model="how"
         />
         <label for="how-other">Other</label>
-        <p v-if="how === 'other'">
-          Please provide other source of learning
-          <input
-            id="other-input"
-            name="other-input"
-            type="text"
-            v-model="otherInput"
-          />
-        </p>
+        <section v-if="how === 'other'">
+          <p>
+            Please provide other source of learning
+            <input
+              id="other-input"
+              name="other-input"
+              type="text"
+              v-model="otherInput"
+            />
+          </p>
+        </section>
       </div>
     </div>
     <div class="form-control">
@@ -156,11 +158,12 @@ export default {
       userAgeValidity: 'pending',
       rating: null,
       otherInput: '',
+      resultOtherInput: [],
     };
   },
   methods: {
     submitForm() {
-      console.log('Username: ' + this.userName);
+      // console.log('Username: ' + this.userName);
       this.userName = '';
       // console.log('Age: ', this.userAge);
       // console.log(this.userAge)
@@ -174,14 +177,18 @@ export default {
       this.interest = [];
       this.resultHow.push(this.how);
       this.how = null;
-      // console.log(this.resultHow);
+      console.log(this.resultHow);
       // console.log('Confirm');
       // console.log(this.confirm);
       this.confirm = false;
       // console.log('Rating');
       // console.log(this.rating);
       this.rating = null;
-      // console.log(this.otherInput);
+
+      console.log(this.otherInput);
+      this.resultOtherInput.push(this.otherInput);
+      console.log(this.resultOtherInput);
+      this.otherInput = '';
     },
     validateInput() {
       if (this.userName === '') {
